@@ -80,3 +80,35 @@ Proyek akhir ini bertujuan untuk membangun sebuah sistem end-to-end berbasis *Bi
 ## 👥 Kontribusi
 Proyek ini dikembangkan sebagai bagian dari studi kasus mata kuliah Big Data (Health Informatics Focus). Silakan buat *pull request* atau buka *issue* jika ada saran pengembangan maupun perbaikan alur kerja.
 
+
+**data tiruan (synthetic dataset)**
+dataset yang kami gunakan merupakan dataset tiruan yang dibuat sedemikian mirip
+Rujukan Resmi (References):
+1. Peraturan Menteri Kesehatan Republik Indonesia (Permenkes) Nomor 2 Tahun 2020 tentang Standar Antropometri Anak.
+2. Keputusan Menteri Kesehatan Republik Indonesia Nomor HK.01.07/MENKES/1182/2022 tentang Standar Alat Antropometri dan Alat Deteksi Dini Perkembangan Anak.
+3. World Health Organization (WHO) Child Growth Standards – Acuan internasional pengukuran pertumbuhan anak balita berdasarkan Z-score panjang/tinggi badan menurut umur
+
+
+## 📊 Dataset & Spesifikasi Data Stunting (*Big Data Scale*)
+
+Untuk mendukung pengujian sistem pemrosesan data skala besar (*Big Data*), proyek ini menggunakan dataset sintetis berskala nasional berukuran **~1 GB** (mencapai 13 juta baris data) yang dirancang secara representatif berdasarkan standar operasional dan regulasi resmi Kementerian Kesehatan Republik Indonesia.
+
+### 1. Rujukan Regulasi & Standar Parameter
+* **Standar Antropometri:** Mengacu pada **Permenkes Nomor 2 Tahun 2020** tentang Standar Antropometri Anak dan standar acuan global *World Health Organization* (WHO) menggunakan indeks *Z-score* Panjang/Tinggi Badan menurut Umur (PB/U atau TB/U).
+* **Klasifikasi Status Stunting:**
+  * *Sangat Pendek (Severely Stunted)*: $Z\text{-score} < -3,0\text{ SD}$
+  * *Pendek (Stunted)*: $-3,0\text{ SD} \le Z\text{-score} < -2,0\text{ SD}$
+  * *Normal*: $-2,0\text{ SD} \le Z\text{-score} \le +3,0\text{ SD}$
+  * *Tinggi*: $Z\text{-score} > +3,0\text{ SD}$
+
+### 2. Cakupan Wilayah Geospasial
+Dataset ini mencakup variasi data multiregional di Indonesia untuk mendukung analisis peta sebaran (*heatmap*) pada dashboard, meliputi:
+* **Pulau Jawa:** Provinsi Jawa Barat, Jawa Tengah, Jawa Timur, dan Banten.
+* **Pulau Sumatra:** Provinsi Sumatera Utara, Sumatera Barat, Sumatera Selatan, dan Lampung.
+* **Wilayah Lainnya:** Nusa Tenggara Timur dan Sulawesi Selatan.
+
+### 3. Struktur Variabel / Fitur Data
+Setiap rekaman data dalam file `stunting_nasional_1gb.csv` terdiri dari 16 atribut komprehensif, meliputi:
+* **Identitas & Lokasi:** `ID_Anak` (Pseudonim/Anomisasi data sesuai etika privasi Modul 14), `Provinsi`, `Kabupaten_Kota`, `Kecamatan`.
+* **Demografi & Fisik:** `Jenis_Kelamin`, `Usia_Bulan`, `Berat_Lahir_kg`, `Panjang_Lahir_cm`, `Berat_Aktual_kg`, `Tinggi_Aktual_cm`.
+* **Indikator Kesehatan & Sosial Ekonomi:** `Z_Score_TB_U`, `Status_Stunting`, `Riwayat_ASI_Eksklusif`, `Akses_Sanitasi`, `Sumber_Air_Minum`, `Pendapatan_Keluarga`.
