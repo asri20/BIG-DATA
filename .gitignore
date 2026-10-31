@@ -1,3 +1,9 @@
-"Module 1/data/" 
+# Large datasets (>100MB)
+data/
+stunting_nasional_1gb.csv
 Module 1/data/stunting_nasional.csv
-*.csvgit add .
+
+# Cache & checkpoints
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
